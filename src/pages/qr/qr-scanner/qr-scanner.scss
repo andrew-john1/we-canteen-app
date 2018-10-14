@@ -1,0 +1,15 @@
+body,
+.app-root,
+ion-app,
+page-qr-scanner {
+    background: none transparent !important;
+}
+
+page-qr-scanner {
+    ion-content,
+    .scroll-content,
+    .fixed-content {
+        background: none transparent !important;
+    }
+}
+

@@ -1,0 +1,28 @@
+<ion-header no-border>
+    <ion-navbar color="we-canteen-blue">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'FOOD_ENTREPRENEURS' | translate }}</ion-title>
+        <ion-buttons right></ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+    <ul>
+        <li *ngFor="let foodEntrepreneur of foodEntrepreneurs"
+            class="meal"
+            (click)="openPage(foodEntrepreneur)">
+            <div class="container">
+                <div class="figure">
+                    <span class="image"
+                          [style.background-image]="foodEntrepreneur.imageUrl"></span>
+                </div>
+                <div class="figcaption">
+                    <h3 class="headline">{{foodEntrepreneur.name}}</h3>
+                    <span class="body">{{foodEntrepreneur.slogan}}</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</ion-content>

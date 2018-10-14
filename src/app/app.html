@@ -1,0 +1,61 @@
+<ion-split-pane>
+    <ion-menu [content]="content">
+        <ion-content>
+            <ul>
+                <li *ngIf="isLoggedIn && isAdmin"
+                    class="border"
+                    menuClose
+                    (click)="openPage('qr-scanner')">
+                    <i class="fa fa-qrcode"></i>
+                    {{ 'QR_SCANNER' | translate }}
+                </li>
+                <li *ngIf="isLoggedIn"
+                    menuClose
+                    (click)="openPage('meals')">
+                    <i class="fa fa-cutlery" aria-hidden="true"></i>
+                    {{ 'MEAL_OVERVIEW' | translate }}
+                </li>
+                <li *ngIf="isLoggedIn"
+                    menuClose
+                    (click)="openPage('orders')">
+                    <i class="fa fa-list" aria-hidden="true"></i>
+                    {{ 'MY_ORDERS' | translate }}
+                </li>
+                <li *ngIf="isLoggedIn"
+                    menuClose
+                    (click)="openPage('food-entrepreneurs')">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    {{ 'FOOD_ENTREPRENEURS' | translate }}
+                </li>
+                <li menuClose
+                    (click)="openPage('settings')">
+                    <i class="fa fa-sliders" aria-hidden="true"></i>
+                    {{ 'SETTINGS' | translate }}
+                </li>
+                <li menuClose
+                    (click)="openPage('about')">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                    {{ 'ABOUT_WE_CANTEEN' | translate }}
+                </li>
+                <li *ngIf="!isLoggedIn"
+                    menuClose
+                    (click)="openPage('login')">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                    {{ 'LOGIN' | translate }}
+                </li>
+                <li *ngIf="isLoggedIn"
+                    menuClose
+                    (click)="logout()">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    {{ 'LOG_OUT' | translate }}
+                </li>
+            </ul>
+        </ion-content>
+    </ion-menu>
+
+    <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+    <ion-nav [root]="rootPage"
+             #content
+             main
+             swipeBackEnabled="false"></ion-nav>
+</ion-split-pane>

@@ -1,0 +1,50 @@
+<ion-header no-border>
+    <ion-toolbar color="we-canteen-blue">
+        <ion-buttons left>
+            <button ion-button
+                    (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>{{order.meal.name}}</ion-title>
+        <ion-buttons right></ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="wrapper">
+        <div class="content">
+            <div>
+                <span class="label">{{ 'FOOD_ENTREPRENEUR_ABBR' | translate }}</span>
+                <span class="value">{{order.foodEntrepreneur.name}}</span>
+            </div>
+            <div>
+                <span class="label">{{ 'AMOUNT_ABBR' | translate }}</span>
+                <span class="value">{{order.amount}}</span>
+            </div>
+            <div>
+                <span class="label">{{ 'LOCATION' | translate }}</span>
+                <span class="value">{{order.location.name}}</span>
+            </div>
+            <div>
+                <span class="label">{{ 'PICK_UP_POINT' | translate }}</span>
+                <span class="value">{{ 'SERVICE_DESK' | translate }}</span>
+            </div>
+            <div>
+                <span class="label">{{ 'DATE' | translate }}</span>
+                <span class="value">{{order?.displayDate}}</span>
+            </div>
+            <div>
+                <span class="label">{{ 'TIME' | translate }}</span>
+                <span class="value">16:00 - 22:00</span>
+            </div>
+        </div>
+        <div class="image">
+            <figure>
+                <img *ngIf="order.imageUrl"
+                     [src]="order.imageUrl"
+                     alt="QR-code">
+            </figure>
+        </div>
+    </div>
+</ion-content>

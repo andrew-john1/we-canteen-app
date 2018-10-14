@@ -1,0 +1,21 @@
+<ion-header no-border>
+    <ion-navbar color="transparent">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{foodEntrepreneur?.name}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="figure">
+        <span class="image"
+              title="Picture: {{foodEntrepreneur?.name}}"
+              [style.background-image]="foodEntrepreneur?.imageUrl"></span>
+    </div>
+    <div class="content">
+        <h1>{{foodEntrepreneur?.name}}</h1>
+        <span>{{foodEntrepreneur?.slogan}}</span>
+        <p>{{foodEntrepreneur?.description}}</p>
+    </div>
+</ion-content>

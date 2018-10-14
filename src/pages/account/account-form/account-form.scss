@@ -1,0 +1,64 @@
+page-account-form {
+    ion-header {
+        @include transparent-title;
+    }
+
+    ion-content {
+        @include top-gradient;
+
+        .scroll-content {
+            margin-top: 0 !important;
+        }
+
+        .figure {
+            @include figure;
+
+            .image {
+                background-image: url('../assets/img/header7.jpg');
+            }
+        }
+
+        form {
+            @include form;
+
+            .form-control {
+                @include input;
+                @include placeholder-color($text-placeholder);
+            }
+
+            .dropdown.item-block {
+                margin-top: 30px;
+                min-height: 30px;
+                padding: 0;
+
+                &.error .item-inner {
+                    border-color: red;
+                }
+
+                .item-inner {
+                    border-bottom: 2px solid $border-grey;
+                    padding: 0;
+
+                    .input-wrapper {
+                        align-items: flex-start;
+                    }
+
+                    ion-label.label {
+                        color: $text-placeholder;
+
+                        &.active {
+                            color: #FFF;
+                        }
+                    }
+
+                    @include ion-select;
+                }
+            }
+
+            .submit {
+                margin-top: 40px;
+                @include button;
+            }
+        }
+    }
+}

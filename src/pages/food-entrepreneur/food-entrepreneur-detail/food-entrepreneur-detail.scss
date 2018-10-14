@@ -1,0 +1,20 @@
+page-food-entrepreneur-detail {
+    ion-header {
+        @include transparent-title;
+    }
+
+    ion-content {
+        background-color: #FFF;
+        @include top-gradient;
+
+        .scroll-content {
+            margin-top: 0 !important;
+        }
+
+        .figure {
+            @include figure;
+        }
+
+        @include content-detail;
+    }
+}

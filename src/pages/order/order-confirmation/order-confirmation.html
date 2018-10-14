@@ -1,0 +1,47 @@
+<ion-header no-border>
+    <ion-navbar color="we-canteen-blue">
+        <ion-title>{{ 'ORDER_CONFIRMATION' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <h1>{{ 'DEAR' | translate }} {{user.firstName}} {{user.lastName}}, {{ 'THANK_YOU_FOR_YOUR_ORDER' | translate }}</h1>
+
+    <ul>
+        <li *ngFor="let order of orders">
+            <p *ngIf="order.localAmount + order.count < order.meal.minimum">
+                {{ 'THE' | translate }}
+                {{order.meal.name}}
+                {{ 'NEEDS_AT_LEAST' | translate }}
+                {{order.meal.minimum - (order.localAmount + order.count)}}
+                {{ 'ORDERS_TO_SUCCEED' | translate }}
+            </p>
+            <p *ngIf="order.localAmount + order.count < order.meal.minimum">
+                {{ 'WE_WILL_KEEP_YOU_INFORMED' | translate }}
+            </p>
+            <p *ngIf="order.localAmount + order.count >= order.meal.minimum">
+                {{ 'YOU_CAN' | translate }}
+                {{order.meal.name}}
+                ({{order.localAmount}}x)
+                {{ 'RECEIVE' | translate }}
+                {{order.formattedDate}}
+                {{ 'BETWEEN' | translate }} 16:00 {{ 'AND' | translate }} 22:00
+                {{ 'AT_THE_SERVICE_DESK_OF_THE' | translate }}
+                {{order.location.name}}.
+            </p>
+        </li>
+    </ul>
+
+    <div class="navigation">
+        <div>
+            <button (click)="openPage('orders')"
+                    class="orders">{{ 'MY_ORDERS' | translate }}
+            </button>
+        </div>
+        <div>
+            <span (click)="openPage('meals')"
+                  class="meals">{{ 'MEAL_OVERVIEW' | translate }}</span>
+        </div>
+    </div>
+
+</ion-content>

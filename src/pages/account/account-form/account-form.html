@@ -1,0 +1,66 @@
+<ion-header no-border>
+    <ion-navbar color="transparent">
+        <button ion-button
+                menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'SIGN_UP' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="figure">
+        <span class="image"
+              title="Afbeelding: Sign up"></span>
+    </div>
+    <form (ngSubmit)="onSubmit(form.value)"
+          [formGroup]="form">
+        <div class="form-control">
+            <input type="text"
+                   [class.error]="!form.controls.firstName.valid && formSend || formError"
+                   formControlName="firstName"
+                   placeholder="{{ 'FIRST_NAME' | translate }}">
+        </div>
+        <div class="form-control">
+            <input type="text"
+                   [class.error]="!form.controls.lastName.valid && formSend || formError"
+                   formControlName="lastName"
+                   placeholder="{{ 'LAST_NAME' | translate }}">
+        </div>
+        <ion-item class="dropdown"
+                  [class.error]="!form.controls.instanceId.valid && formSend || formError">
+            <ion-label [class.active]="form.value.instanceId">{{ 'COMPANY' | translate }}</ion-label>
+            <ion-select formControlName="instanceId">
+                <ion-option *ngFor="let instance of instances"
+                            [value]="instance._id">{{instance.name}}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item *ngIf="companies.length > 1"
+                  class="dropdown"
+                  [class.error]="!form.controls.companyId.valid && formSend || formError">
+            <ion-label [class.active]="form.value.companyId">{{ 'COMPANY' | translate }}</ion-label>
+            <ion-select formControlName="companyId">
+                <ion-option *ngFor="let company of companies"
+                            [value]="company._id">{{company.name}}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+        <div class="form-control">
+            <input type="email"
+                   [class.error]="!form.controls.email.valid && formSend || formError"
+                   formControlName="email"
+                   email
+                   [placeholder]="placeholder">
+        </div>
+        <div class="form-control">
+            <input type="password"
+                   [class.error]="!form.controls.password.valid && formSend || formError"
+                   formControlName="password"
+                   placeholder="{{ 'PASSWORD' | translate }}">
+        </div>
+        <button class="submit"
+                type="submit">{{ 'SIGN_UP' | translate }}
+        </button>
+    </form>
+</ion-content>

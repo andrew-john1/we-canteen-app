@@ -1,0 +1,16 @@
+<ion-header no-border>
+    <ion-navbar>
+        <ion-title>{{ 'ACCOUNT_ACTIVATED' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h1>{{ 'ACCOUNT_ACTIVATED' | translate }}</h1>
+    <p>{{ 'ACCOUNT_ACTIVATED_TEXT' | translate }}</p>
+
+    <button ion-button block
+            (click)="login()"
+            class="login"
+            type="submit">{{ 'LOGIN' | translate }}
+    </button>
+</ion-content>

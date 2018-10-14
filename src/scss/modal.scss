@@ -1,0 +1,40 @@
+ion-modal {
+
+    &.order {
+        ion-backdrop {
+            visibility: visible;
+            opacity: 0.6 !important;
+        }
+
+        > div {
+            position: absolute;
+            width: calc(100% - 50px);
+            max-width: 600px;
+            left: 50%;
+            top: 50%;
+            overflow: hidden;
+            @include border-radius(3px);
+            @include transform(translate(-50%, -50%) !important);
+        }
+    }
+
+    &.ticket > div {
+        height: 445px;
+    }
+
+    &.meal > div {
+        height: 545px;
+        width: calc(100% - 40px);
+    }
+
+    //&.result > div {
+    //    height: 360px;
+    //}
+
+    ion-toolbar.toolbar-ios {
+        padding: 0 !important;
+        height: 50px;
+        min-height: 0 !important;
+    }
+}
+

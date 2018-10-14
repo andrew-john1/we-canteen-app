@@ -1,0 +1,66 @@
+<ion-content fullscreen="true">
+    <div class="onboarding">
+        <div class="skip" [style.opacity]="currentIndex < 4 ? '1' : '0'">
+            <button (click)="start()">{{ 'SKIP' | translate }}</button>
+        </div>
+        <ion-slides (ionSlideWillChange)="slideWillChange()">
+            <ion-slide>
+                <div>
+                    <div class="icon">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </div>
+                    <h2>{{ 'ONBOARDING_SLIDE_1_TITLE' | translate }}</h2>
+                    <p>{{ 'ONBOARDING_SLIDE_1_TEXT' | translate }}</p>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div>
+                    <div class="icon">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </div>
+                    <h2>{{ 'ONBOARDING_SLIDE_2_TITLE' | translate }}</h2>
+                    <p>{{ 'ONBOARDING_SLIDE_2_TEXT' | translate }}</p>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div>
+                    <div class="icon">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                    </div>
+                    <h2>{{ 'ONBOARDING_SLIDE_3_TITLE' | translate }}</h2>
+                    <p>{{ 'ONBOARDING_SLIDE_3_TEXT' | translate }}</p>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div>
+                    <div class="icon">
+                        <i class="fa fa-car" aria-hidden="true"></i>
+                    </div>
+                    <h2>{{ 'ONBOARDING_SLIDE_4_TITLE' | translate }}</h2>
+                    <p>{{ 'ONBOARDING_SLIDE_4_TEXT' | translate }}</p>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div>
+                    <div class="icon">
+                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    </div>
+                    <h2>{{ 'ONBOARDING_SLIDE_5_TITLE' | translate }}</h2>
+                    <p>{{ 'ONBOARDING_SLIDE_5_TEXT' | translate }}</p>
+                </div>
+            </ion-slide>
+        </ion-slides>
+        <div class="wrapper">
+            <div class="progress">
+                <span class="dot" [class.active]="currentIndex === 0"></span>
+                <span class="dot" [class.active]="currentIndex === 1"></span>
+                <span class="dot" [class.active]="currentIndex === 2"></span>
+                <span class="dot" [class.active]="currentIndex === 3"></span>
+                <span class="dot" [class.active]="currentIndex === 4"></span>
+            </div>
+            <div class="next" *ngIf="currentIndex === 4">
+                <button (click)="start()">{{ 'GET_STARTED' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</ion-content>

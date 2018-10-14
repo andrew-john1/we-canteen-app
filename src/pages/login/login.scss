@@ -1,0 +1,48 @@
+page-login {
+    ion-header {
+        @include transparent-title;
+    }
+
+    ion-content {
+        .scroll-content {
+            margin-top: 0 !important;
+        }
+
+        .figure {
+            @include figure;
+
+            .image {
+                background-image: url('../assets/img/header6.jpg');
+            }
+
+            .slide-1 {
+
+            }
+        }
+
+        form {
+            @include form;
+
+            .form-control {
+                @include input;
+                @include placeholder-color($text-placeholder);
+            }
+
+            .action-buttons {
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-between;
+
+                .sign-up {
+                    border-bottom: 1px solid $we-canteen-blue;
+                    padding-bottom: 3px;
+                }
+            }
+
+            .submit {
+                margin-top: 40px;
+                @include button;
+            }
+        }
+    }
+}

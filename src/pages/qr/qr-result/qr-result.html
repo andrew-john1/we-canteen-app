@@ -1,0 +1,52 @@
+<ion-header no-border>
+    <ion-toolbar color="we-canteen-blue">
+        <ion-buttons left>
+            <button ion-button
+                    (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>{{ 'GIVE_AWAY_ORDER' | translate }}</ion-title>
+        <ion-buttons right></ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="content">
+        <div>
+            <span class="label">{{ 'MEAL' | translate }}</span>
+            <span class="value">{{meal?.name}}</span>
+        </div>
+        <div>
+            <span class="label">{{ 'AMOUNT_ABBR' | translate }}</span>
+            <span class="value">{{order?.amount}}</span>
+        </div>
+        <div>
+            <span class="label">{{ 'FOOD_ENTREPRENEUR_ABBR' | translate }}</span>
+            <span class="value">{{foodEntrepreneur?.name}}</span>
+        </div>
+        <div>
+            <span class="label">{{ 'LOCATION' | translate }}</span>
+            <span class="value">{{location?.name}}</span>
+        </div>
+        <div>
+            <span class="label">{{ 'DATE' | translate }}</span>
+            <span class="value">{{order?.formattedDate}}</span>
+        </div>
+        <div>
+            <span class="label">{{ 'TIME' | translate }}</span>
+            <span class="value">16:00 - 22:00</span>
+        </div>
+        <div>
+            <span class="label">{{ 'USER' | translate }}</span>
+            <span class="value">{{user?.firstName}} {{user?.lastName}}</span>
+        </div>
+        <div>
+            <span class="label">{{ 'RECEIVED' | translate }}</span>
+            <span class="value">{{order?.received ? ( 'YES' | translate ) : ( 'NO' | translate )}}</span>
+        </div>
+        <p *ngIf="!order?.received">{{ 'HOLD_THE_BUTTON' | translate }}</p>
+        <button *ngIf="!order?.received"
+                (press)="giveAwayMeal(order)">{{ 'GIVE_AWAY' | translate }}</button>
+    </div>
+</ion-content>

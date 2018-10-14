@@ -1,0 +1,61 @@
+<ion-header no-border>
+    <ion-navbar color="transparent">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{event?.meal.name}}</ion-title>
+        <ion-buttons [class.transform]="transformShoppingCart"
+                     right>
+            <span *ngIf="shoppingCartCount"
+                  class="amount">{{shoppingCartCount}}</span>
+            <button ion-button
+                    (click)="openShoppingCart()">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="figure">
+        <div class="percentage">
+            <div class="progress" [class.max]="!this.showFooter">
+                    <span class="dot"
+                          *ngFor="let dot of event?.dotsAmount; let i = index"
+                          [class.active]="i + 1 <= event.count + event.localAmount"></span>
+            </div>
+        </div>
+        <span class="image"
+              title="Picture: {{event?.meal.name}}"
+              [style.background-image]="event?.meal.imageUrl"></span>
+    </div>
+    <div class="content"
+         [class.padding-bottom]="isFuture && showFooter">
+        <div class="header">
+            <h1>{{event?.meal.name}}</h1>
+            <span class="price">€{{event?.price}}</span>
+        </div>
+        <span (click)="openPage(event?.foodEntrepreneur)">{{event?.foodEntrepreneur?.name}}</span>
+        <span>{{event?.location?.name}}, {{ 'SERVICE_DESK' | translate }}</span>
+        <span>{{event?.formattedDate}}, {{ 'BETWEEN' | translate }} 16:00 - 22:00</span>
+        <p>{{event?.meal.description}}</p>
+        <h3>{{ 'PREPARE' | translate }}</h3>
+        <p>{{event?.meal.preparation}}</p>
+    </div>
+</ion-content>
+
+<ion-footer *ngIf="isFuture && showFooter">
+    <button class="subtract"
+            (click)="remove()">
+        <ion-icon name="remove"></ion-icon>
+    </button>
+    <div class="add-to-cart">
+        <button (click)="addToCart(event)"
+                [class.active]="event?.detailAmount > 0">{{ 'ADD_TO_CART' | translate }} ({{event?.detailAmount}})
+        </button>
+    </div>
+    <button class="add"
+            (click)="add()">
+        <ion-icon name="add"></ion-icon>
+    </button>
+</ion-footer>

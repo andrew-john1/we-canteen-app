@@ -1,0 +1,157 @@
+page-meal-explanation {
+    ion-content {
+        position: relative;
+
+        .scroll-content {
+            padding: 16px;
+        }
+
+        ion-slides {
+            ion-slide.swiper-slide {
+                padding: 3px;
+                height: 100%;
+                align-items: baseline;
+
+                h2, p {
+                    text-align: left;
+                }
+
+                h2 {
+                    font-size: 20px;
+                    font-family: lato-medium;
+                    letter-spacing: 0.4px;
+                }
+
+                p {
+                    font-size: 16px;
+                    margin-top: 0;
+                }
+
+                .cards {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .fa {
+                        font-size: 70px;
+                        color: $text-color;
+                    }
+                }
+
+                .meal {
+                    margin-bottom: 20px;
+                    @include border-radius(3px);
+                    @include box-shadow(0 0 4px 0 rgba(0, 0, 0, 0.5));
+
+                    .figure {
+                        position: relative;
+                        height: 130px;
+
+                        @include triangle;
+
+                        .image {
+                            display: inline-block;
+                            height: 130px;
+                            width: 100%;
+                            background-image: url('../assets/img/meal-image.png');
+                            background-size: cover;
+                            background-position: center;
+                        }
+                    }
+
+                    .content {
+                        display: inline-block;
+                        width: 100%;
+                        padding: 13px;
+                        text-align: left;
+
+                        > div {
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 5px;
+
+                            h3, .price {
+                                display: inline-block;
+                                font-family: lato-medium;
+                            }
+
+                            h3 {
+                                font-size: 16px;
+                                width: calc(100% - 50px);
+                                white-space: nowrap;
+                                -ms-text-overflow: ellipsis;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                margin-bottom: 0;
+                            }
+
+                            .price {
+                                font-size: 14px;
+                                width: 50px;
+                                text-align: right;
+                            }
+                        }
+
+                        .food-entrepreneur {
+                            font-size: 14px;
+                        }
+
+                    }
+
+                    @include percentage;
+
+                    .percentage {
+                        padding: 13px;
+                    }
+                }
+            }
+        }
+
+        .wrapper {
+            position: absolute;
+            display: inline-block;
+            background-color: #FFF;
+            right: 0;
+            bottom: 20px;
+            left: 0;
+            z-index: 1;
+
+            .progress {
+                font-size: 0;
+                text-align: center;
+
+                .dot {
+                    display: inline-block;
+                    margin: 0 5px;
+                    width: 10px;
+                    height: 10px;
+                    border: 1px solid $we-canteen-blue;
+                    @include border-radius(50%);
+                    @include transition(background-color 100ms);
+
+                    &.active {
+                        border: none;
+                        background-color: $we-canteen-blue;
+                    }
+                }
+            }
+
+            .next {
+                margin-top: 20px;
+                text-align: center;
+
+                button {
+                    margin: 0;
+                    @include button;
+                }
+            }
+        }
+
+        .confirm {
+            text-align: center;
+
+            button {
+                @include button;
+            }
+        }
+    }
+}

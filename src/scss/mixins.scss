@@ -1,0 +1,580 @@
+@mixin figure() {
+    font-size: 0;
+
+    .image {
+        display: inline-block;
+        width: 100%;
+        height: 170px;
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+@mixin figure-small($width, $height) {
+    font-size: 0;
+    margin-right: 15px;
+    overflow: hidden;
+    @include border-radius(3px);
+    @include box-shadow(0 0 5px 1px rgba(0, 0, 0, 0.3));
+
+    .image {
+        display: inline-block;
+        width: $width;
+        height: $height;
+        background-position: center;
+        @include background-size(cover);
+    }
+}
+
+@mixin top-gradient() {
+    &:after {
+        content: '';
+        display: inline-block;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        @include background(linear-gradient(rgba(0, 0, 0, 0.5), transparent))
+    }
+}
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+@mixin transition-duration($args...) {
+    -webkit-transition-duration: $args;
+    -moz-transition-duration: $args;
+    -ms-transition-duration: $args;
+    -o-transition-duration: $args;
+    transition-duration: $args;
+}
+
+@mixin transform($args...) {
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -ms-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+}
+
+@mixin box-sizing($args...) {
+    -webkit-box-sizing: $args;
+    -moz-box-sizing: $args;
+    box-sizing: $args;
+}
+
+@mixin input() {
+    margin-top: 30px;
+
+    input {
+        width: 100%;
+        padding: 0 0 8px 0;
+        border: none;
+        font-size: 16px;
+        border-bottom: 2px solid $border-grey;
+        @include border-radius(0);
+        @include transition(color 300ms);
+
+        &.error {
+            border-color: $we-canteen-orange;
+        }
+
+        &:focus {
+            border-bottom: 2px solid $we-canteen-blue;
+        }
+    }
+}
+
+@mixin border-radius($args...) {
+    -webkit-border-radius: $args;
+    -moz-border-radius: $args;
+    border-radius: $args;
+}
+
+@mixin appearance($arg) {
+    -webkit-appearance: $arg;
+    -moz-appearance: $arg;
+    appearance: $arg;
+}
+
+@mixin background($args...) {
+    background: $args;
+    background: -webkit-linear-gradient($args);
+    background: -o-linear-gradient($args);
+    background: -moz-linear-gradient($args);
+    background: linear-gradient($args);
+}
+
+@mixin gradient-to-right($color-one, $color-two) {
+    background: $color-one; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, $color-one, $color-two); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, $color-one, $color-two); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, $color-one, $color-two); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, $color-one, $color-two); /* Standard syntax */
+}
+
+@mixin radial-gradient-top($width, $height) {
+    background: -moz-radial-gradient(0 100%, circle, #FFF $width, #FFF $height),
+    -moz-radial-gradient(100% 100%, circle, #FFF $width, #FFF $height),
+    -moz-radial-gradient(100% 0, circle, rgba(255, 255, 255, 0) $width, #FFF $height),
+    -moz-radial-gradient(0 0, circle, rgba(255, 255, 255, 0) $width, #FFF $height);
+    background: -o-radial-gradient(0 100%, circle, #FFF $width, #FFF $height),
+    -o-radial-gradient(100% 100%, circle, #FFF $width, #FFF $height),
+    -o-radial-gradient(100% 0, circle, rgba(255, 255, 255, 0) $width, #FFF $height),
+    -o-radial-gradient(0 0, circle, rgba(255, 255, 255, 0) $width, #FFF $height);
+    background: -webkit-radial-gradient(0 100%, circle, #FFF $width, #FFF $height),
+    -webkit-radial-gradient(100% 100%, circle, #FFF $width, #FFF $height),
+    -webkit-radial-gradient(100% 0, circle, rgba(255, 255, 255, 0) $width, #FFF $height),
+    -webkit-radial-gradient(0 0, circle, rgba(255, 255, 255, 0) $width, #FFF $height);
+    background: radial-gradient(circle, #FFF $width, #FFF $height),
+    radial-gradient(circle, #FFF $width, #FFF $height),
+    radial-gradient(circle farthest-corner at 100% 0, rgba(255, 255, 255, 0) $width, #FFF $height),
+    radial-gradient(circle farthest-corner at 0 0, rgba(255, 255, 255, 0) $width, #FFF $height);
+}
+
+@mixin radial-gradient-bottom($width, $height) {
+    background: -moz-radial-gradient(0 100%, circle, rgba(255, 255, 255, 0) $width, #FFF $height),
+    -moz-radial-gradient(100% 100%, circle, rgba(255, 255, 255, 0) $width, #FFF $height),
+    -moz-radial-gradient(100% 0, circle, #FFF $width, #FFF $height),
+    -moz-radial-gradient(0 0, circle, #FFF $width, #FFF $height);
+    background: -o-radial-gradient(0 100%, circle, rgba(255, 255, 255, 0) $width, #FFF $height),
+    -o-radial-gradient(100% 100%, circle, rgba(255, 255, 255, 0) $width, #FFF $height),
+    -o-radial-gradient(100% 0, circle, #FFF $width, #FFF $height),
+    -o-radial-gradient(0 0, circle, #FFF $width, #FFF $height);
+    background: -webkit-radial-gradient(0 100%, circle, rgba(255, 255, 255, 0) $width, #FFF $height),
+    -webkit-radial-gradient(100% 100%, circle, rgba(255, 255, 255, 0) $width, #FFF $height),
+    -webkit-radial-gradient(100% 0, circle, #FFF $width, #FFF $height),
+    -webkit-radial-gradient(0 0, circle, #FFF $width, #FFF $height);
+    background: radial-gradient(circle farthest-corner at 0 100%, rgba(255, 255, 255, 0) $width, #FFF $height),
+    radial-gradient(circle farthest-corner at 100% 100%, rgba(255, 255, 255, 0) $width, #FFF $height),
+    radial-gradient(circle, #FFF $width, #FFF $height),
+    radial-gradient(circle, #FFF $width, #FFF $height);
+}
+
+@mixin box-shadow($args...) {
+    -webkit-box-shadow: $args;
+    -moz-box-shadow: $args;
+    box-shadow: $args;
+}
+
+@mixin list() {
+    margin: 0;
+    list-style: none;
+    padding: 15px;
+
+    li {
+        overflow: hidden;
+        margin-bottom: 15px;
+        display: inline-block;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        @include border-radius(3px);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &.meal {
+            @include box-shadow(0 0 4px 0 rgba(0, 0, 0, 0.5));
+
+            @media screen and (min-width: 768px) {
+                vertical-align: top;
+                width: calc(50% - 8px);
+                &:nth-child(2n) {
+                    margin-right: 16px;
+                }
+            }
+        }
+
+        &.date {
+            div {
+                text-align: center;
+
+                span {
+                    display: inline-block;
+                    font-size: 14px;
+                    font-family: lato-bold;
+                    text-transform: uppercase;
+                    text-align: center;
+                    letter-spacing: 0.35px;
+                    padding-bottom: 5px;
+                    border-bottom: 2px solid $we-canteen-green;
+                    width: auto;
+                    @include border-radius(0);
+                    @include box-shadow(none);
+
+                    &.warning {
+                        border-color: $we-canteen-orange;
+                    }
+                }
+            }
+        }
+
+        .container {
+            position: relative;
+            margin: 0;
+            @include triangle;
+
+            .figure {
+                @include figure();
+            }
+
+            .figcaption {
+                position: relative;
+                padding: 15px;
+
+                h3 {
+                    display: inline-block;
+                    font-size: 16px;
+                    margin-top: 0;
+                    margin-bottom: 5px;
+                    font-family: lato-bold;
+                    letter-spacing: 0.35px;
+                }
+
+                div {
+                    width: 100%;
+
+                    h3 {
+                        white-space: nowrap;
+                        -ms-text-overflow: ellipsis;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        width: calc(100% - 50px);
+                    }
+
+                    span {
+                        display: inline-block;
+                        width: 50px;
+                        font-size: 14px;
+                        text-align: right;
+                        vertical-align: bottom;
+                        font-family: lato-bold;
+                        margin-bottom: 5px;
+                    }
+                }
+
+                span {
+                    display: block;
+                }
+
+                span {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        @include percentage;
+    }
+}
+
+@mixin text-overflow($args...) {
+    -ms-text-overflow: $args;
+    text-overflow: $args;
+}
+
+@mixin background-size($args...) {
+    -webkit-background-size: $args;
+    background-size: $args;
+}
+
+@mixin button() {
+    display: inline-block;
+    padding: 0;
+    width: 180px;
+    height: 46px;
+    text-transform: initial;
+    font-size: 16px;
+    font-familiy: lato-medium;
+    letter-spacing: 0.4px;
+    color: #FFF;
+    background-color: $we-canteen-blue;
+    border: none;
+    @include box-shadow(none);
+    @include border-radius(23px);
+
+    &.activated {
+        background-color: $we-canteen-blue;
+    }
+}
+
+@mixin transparent-title() {
+    border-bottom: none;
+    ion-title.title {
+        .toolbar-title {
+            color: transparent;
+        }
+    }
+}
+
+@mixin order-details-header() {
+    h3 {
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 0;
+        margin-bottom: 5px;
+        font-family: lato-bold;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        @include text-overflow(ellipsis);
+    }
+}
+
+@mixin order-details-content {
+    span {
+        font-size: 14px;
+        display: block;
+        margin-bottom: 5px;
+
+        &.small {
+            font-size: 12px;
+            color: $text-color-sixty;
+            margin-bottom: 3px;
+        }
+
+        i {
+            width: 15px;
+            text-align: center;
+            margin-right: 3px;
+        }
+
+        span {
+            display: inline-block;
+            margin-bottom: 0;
+            font-size: 12px;
+        }
+    }
+}
+
+@mixin ticket-content {
+    div {
+        float: left;
+        text-align: left;
+        margin-top: 15px;
+
+        &:nth-of-type(2n) {
+            width: 40%;
+        }
+
+        &:nth-of-type(2n+1) {
+            width: 60%;
+        }
+
+        span {
+            display: block;
+        }
+
+        .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .value {
+            font-size: 16px;
+            font-family: lato-bold;
+            padding-right: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            @include text-overflow(ellipsis);
+        }
+    }
+}
+
+@mixin placeholder-color($color) {
+    ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: $color;
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: $color;
+        opacity: 1;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: $color;
+        opacity: 1;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: $color;
+    }
+    ::-ms-input-placeholder { /* Microsoft Edge */
+        color: $color;
+    }
+}
+
+@mixin ion-select {
+    ion-select {
+        padding-top: 0;
+        padding-bottom: 0;
+
+        .select-icon .select-icon-inner {
+            color: $text-placeholder;
+        }
+
+        .select-text {
+            position: absolute;
+            left: 0;
+            color: $text-color;
+        }
+    }
+}
+
+@mixin content-detail {
+    .content {
+        padding: 15px;
+        margin-bottom: 20px;
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-family: lato-semibold;
+        }
+
+        h3 {
+            display: inline-block;
+            width: 100%;
+            font-size: 18px;
+            font-family: lato-semibold;
+            letter-spacing: 0.4px;
+            margin: 0;
+        }
+
+        span {
+            color: #4C5473;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        p {
+            display: inline-block;
+            width: 100%;
+            margin-top: 5px;
+            color: $text-color-eighty;
+        }
+    }
+}
+
+@mixin percentage {
+    .percentage {
+        &.border {
+            border-top: 1px solid #E6E6E6;
+        }
+
+        .label {
+            position: relative;
+            margin-bottom: 7px;
+
+            span {
+                font-size: 12px;
+            }
+
+            .minimum,
+            .maximum {
+                font-size: 11px;
+                float: right;
+            }
+
+            .minimum {
+                position: absolute;
+                @include transform(translateX(-3px));
+            }
+        }
+
+        .progress {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            width: 100%;
+            height: 10px;
+            //background-color: #F5F5F5;
+            //border-radius: 4px;
+            //overflow: hidden;
+
+            .dot {
+                width: 10px;
+                height: 10px;
+                background-color: #D8E6D0;
+                border: 1px solid #94B580;
+                @include border-radius(50%);
+                @include transition(tranform 100ms);
+                @include transform(scale(1));
+
+                &.active {
+                    background-color: #94B580;
+                }
+
+                &.animate {
+                    @include transform(scale(1.3));
+                }
+            }
+
+            &.max {
+                .dot {
+                    border: $we-canteen-orange;
+                    background-color: $we-canteen-orange;
+                }
+            }
+
+            .green {
+                position: absolute;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background-color: $we-canteen-green;
+                @include transition(width 500ms);
+
+                &.min {
+                    background-color: #CBCBCB;
+                }
+
+                &.max {
+                    background-color: $we-canteen-red;
+                }
+            }
+        }
+    }
+}
+
+@mixin form {
+    padding: 0 30px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+@mixin triangle {
+    .triangle {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 0;
+        border-top: 60px solid #FFF;
+        border-left: 60px solid transparent;
+
+        span {
+            position: absolute;
+            top: -60px;
+            right: -8px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-family: lato-bold;
+            line-height: 42px;
+            width: 60px;
+            text-align: center;
+            @include transform(rotate(45deg));
+        }
+    }
+}

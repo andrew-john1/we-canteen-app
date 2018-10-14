@@ -1,0 +1,18 @@
+page-food-entrepreneur-overview {
+    ion-content {
+        ul {
+            @include list;
+
+            li.meal {
+                @media screen and (min-width: 768px) {
+                    &:nth-child(2n) {
+                        margin-right: 0;
+                    }
+                    &:nth-child(2n+1) {
+                        margin-right: 16px;
+                    }
+                }
+            }
+        }
+    }
+}

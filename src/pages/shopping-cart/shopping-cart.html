@@ -1,0 +1,68 @@
+<ion-header no-border>
+    <ion-toolbar color="we-canteen-blue">
+        <ion-buttons left>
+            <button ion-button
+                    (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>{{ 'SHOPPING_CART' | translate }}</ion-title>
+        <ion-buttons right></ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngFor="let date of dates">
+        <ion-item no-lines>{{date.format}}</ion-item>
+        <ion-item-sliding *ngFor="let event of eventsByDate[date.date]">
+            <ion-item no-lines>
+                <div class="figure">
+                    <span class="image"
+                          title="Picture: {{event.meal.name}}"
+                          [style.background-image]="event.meal.imageUrl"></span>
+                </div>
+                <div class="content">
+                    <h3>{{event.meal.name}}</h3>
+                    <span class="food-entrepreneur">{{event.foodEntrepreneur.name}}</span>
+                    <span class="small">{{event.location.name}}</span>
+                    <div class="amount">
+                        <span class="remove"
+                              (click)="remove(event)">
+                            <ion-icon name="remove"></ion-icon>
+                        </span>
+                            <span class="number">{{event.localAmount}}</span>
+                            <span class="add"
+                                  (click)="add(event)">
+                            <ion-icon name="add"></ion-icon>
+                        </span>
+                    </div>
+                    <span class="price">€ {{event.total}}</span>
+                </div>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button
+                        color="danger"
+                        (click)="remove(event, true)">
+                    <i class="fa fa-trash" aria-hidden="true"></i></button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+    <div class="footer">
+        <div>
+            <span class="header">{{ 'SUBTOTAL' | translate }}</span>
+            <span class="price">€{{subtotal}}</span>
+        </div>
+        <button (click)="checkout()">{{ 'PLACE_YOUR_ORDER' | translate }}</button>
+    </div>
+</ion-content>
+
+<ion-item>
+    <ion-label>{{ 'PAYMENT_METHOD' | translate }}</ion-label>
+    <ion-select [(ngModel)]="paymentMethod"
+                (ngModelChange)="selectPaymentMethod($event)">
+        <ion-option value="ideal">{{ 'IDEAL' | translate}}</ion-option>
+        <ion-option value="paypal">{{ 'PAYPAL' | translate}}</ion-option>
+        <ion-option value="creditCard">{{ 'CREDIT_CARD' | translate}}</ion-option>
+    </ion-select>
+</ion-item>

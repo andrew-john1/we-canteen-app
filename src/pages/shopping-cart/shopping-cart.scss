@@ -1,0 +1,166 @@
+page-shopping-cart {
+    ion-content {
+        position: relative;
+
+        .scroll-content {
+            padding-top: 10px;
+
+            ion-list.list {
+                margin: 0;
+
+                &:last-of-type {
+                    margin-bottom: 120px;
+                }
+
+                > ion-item.item-block {
+                    padding: 0;
+                    margin-top: 10px;
+                    margin-bottom: 5px;
+                    min-height: 0;
+
+                    &:first-child {
+                        border-top: none;
+                    }
+
+                    .item-inner {
+                        padding: 0;
+                    }
+
+                    ion-label {
+                        padding-left: 20px;
+                        font-size: 14px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.3px;
+                        font-family: lato-medium;
+                    }
+
+                }
+
+                ion-item-sliding.item-wrapper {
+                    &:first-child ion-item.item-block ion-label {
+                        padding-top: 0;
+                    }
+
+                    &:last-child .item-block {
+                        border-bottom: none;
+                    }
+
+                    ion-item.item-block {
+                        padding: 0;
+
+                        .item-inner {
+                            padding-right: 0;
+                        }
+
+                        ion-label {
+                            display: flex;
+                            flex-direction: row;
+                            margin: 0;
+                            padding: 10px 20px;
+                            white-space: initial;
+
+                            .figure {
+                                @include figure-small(80px, 100px);
+                            }
+
+                            .content {
+                                display: inline-block;
+                                position: relative;
+                                width: calc(100% - 95px);
+                                font-size: 0;
+                                @include order-details-header;
+                                @include order-details-content;
+
+                                .food-entrepreneur,
+                                .location {
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    width: 100%;
+                                    @include text-overflow(ellipsis);
+                                }
+
+                                .food-entrepreneur {
+                                    color: $text-color-eighty;
+                                    margin-bottom: 4px;
+                                }
+
+                                .amount {
+                                    position: absolute;
+                                    bottom: 0;
+                                    border: 1px solid #626985;
+                                    @include border-radius(3px);
+
+                                    span {
+                                        display: inline-block;
+                                        vertical-align: top;
+                                        width: 25px;
+                                        height: 25px;
+                                        text-align: center;
+                                        margin-bottom: 0;
+                                        line-height: 25px;
+
+                                        ion-icon {
+                                            line-height: 25px;
+                                        }
+                                    }
+
+                                    .remove,
+                                    .add {
+                                        width: 30px;
+                                    }
+                                }
+
+                                .price {
+                                    position: absolute;
+                                    bottom: 0;
+                                    right: 0;
+                                    font-family: lato-semibold;
+                                }
+                            }
+                        }
+                    }
+
+                    ion-item-options {
+                        button {
+                            padding: 0 20px;
+
+                            i {
+                                font-size: 26px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #FFF;
+                padding: 15px 20px;
+                @include box-shadow(0 0 4px 2px rgba(0, 0, 0, 0.2));
+
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 15px;
+
+                    span {
+                        font-family: lato-bold;
+                        letter-spacing: 0.4px;
+                    }
+
+                    .header {
+                        text-transform: uppercase;
+                    }
+                }
+
+                button {
+                    @include button;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

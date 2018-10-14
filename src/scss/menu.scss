@@ -1,0 +1,55 @@
+ion-menu {
+    ion-content.content {
+        position: relative;
+        background-color: $we-canteen-blue;
+
+        &:after {
+            content: '';
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            @include gradient-to-right(transparent, rgba(0, 0, 0, 0.1));
+        }
+
+        ul {
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            top: 50%;
+            width: 100%;
+            @include transform(translateY(-50%));
+
+            li {
+                &:active {
+                    background-color: $we-canteen-blue;
+                }
+
+                &.border {
+                    border-bottom: 1px solid #FFF;
+                }
+
+                .item-inner {
+                    min-height: 0;
+                }
+
+                display: inline-block;
+                font-family: lato-medium;
+                text-align: left;
+                font-size: 18px;
+                color: #FFF;
+                background-color: transparent;
+                letter-spacing: 0.4px;
+                padding: 15px 0 15px 25px;
+                width: 100%;
+                cursor: pointer;
+                @include appearance(none);
+
+                i {
+                    width: 18px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

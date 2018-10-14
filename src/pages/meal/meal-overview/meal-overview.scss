@@ -1,0 +1,193 @@
+page-meal-overview {
+    ion-header {
+        ion-navbar {
+            ion-title {
+                ion-item.item {
+                    background-color: transparent;
+
+                    .item-inner {
+                        padding: 0;
+                    }
+
+                    ion-label.label {
+                        color: $we-canteen-blue;
+                    }
+                }
+
+                ion-select.select {
+                    width: 100%;
+                    max-width: initial;
+                    text-align: center;
+                    padding-right: 0;
+
+                    .select-text {
+                        color: #FFF;
+                        font-size: 18px;
+                        font-family: lato-medium;
+                    }
+
+                    .select-icon {
+                        position: absolute;
+                        right: 5px;
+                        .select-icon-inner {
+                            color: #FFF;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    ion-content {
+        position: relative;
+
+        .scroll-content {
+            overflow-y: hidden;
+        }
+
+        .dates {
+            position: fixed;
+            z-index: 2;
+            top: 51px;
+            background-color: #EBF5F5;
+            border-bottom: 1px solid $we-canteen-dark-blue;
+            height: 51px;
+            width: 100%;
+
+            ul {
+                padding: 0;
+                list-style: none;
+                height: 50px;
+                margin: 0;
+                white-space: nowrap;
+                @include transition(transform 250ms);
+
+                &.transform-1 {
+                    @include transform(translateX(-(100%/7)));
+                }
+
+                &.transform-2 {
+                    @include transform(translateX(-(2*(100%/7))));
+                }
+
+                &.transform-3 {
+                    @include transform(translateX(-(3*(100%/7))));
+                }
+
+                &.transform-4 {
+                    @include transform(translateX(-(4*(100%/7))));
+                }
+
+                &.transform-5 {
+                    @include transform(translateX(-(5*(100%/7))));
+                }
+
+                &.transform-6 {
+                    @include transform(translateX(-(6*(100%/7))));
+                }
+
+                &.transform-7 {
+                    @include transform(translateX(-(7*(100%/7))));
+                }
+
+                &.transform-8 {
+                    @include transform(translateX(-(8*(100%/7))));
+                }
+
+                &.transform-9 {
+                    @include transform(translateX(-(9*(100%/7))));
+                }
+
+                &.transform-10 {
+                    @include transform(translateX(-(10*(100%/7))));
+                }
+
+                &.transform-11 {
+                    @include transform(translateX(-(11*(100%/7))));
+                }
+
+                &.transform-12 {
+                    @include transform(translateX(-(12*(100%/7))));
+                }
+
+                li {
+                    display: inline-block;
+                    text-align: center;
+                    border-left: 1px solid #EBF5F5;
+                    width: (100%/7);
+                    height: 50px;
+                    @include transition(border 100ms ease-in);
+
+                    &.active {
+                        background-color: #FFF;
+                        opacity: 0.9;
+                    }
+
+                    &.active,
+                    &.active + li {
+                        //background-color: #C8C3CF;
+                        border-left: 1px solid $we-canteen-dark-blue;
+                    }
+
+                    &:last-child.active {
+                        border-right: 1px solid $we-canteen-dark-blue;
+                    }
+
+                    &.inactive .flex {
+                        opacity: 0.5;
+                    }
+
+                    &:first-child {
+                        border-left: none;
+                    }
+
+                    .flex {
+                        display: flex;
+                        height: 100%;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        cursor: pointer;
+
+                        .date {
+                            font-size: 16px;
+                            font-family: lato-bold;
+                        }
+
+                        .day {
+                            text-transform: uppercase;
+                            font-size: 12px;
+                            font-family: lato-medium;
+                        }
+                    }
+                }
+            }
+        }
+
+        .dropdown + ul {
+            margin-top: 0;
+        }
+
+        ion-slides {
+            position: fixed;
+            height: calc(100vh - 102px);
+            top: 102px;
+
+            ion-slide.swiper-slide {
+                overflow: auto;
+                display: inline-block;
+                height: 100%;
+                font-size: 0;
+
+                ul {
+                    margin-left: 0;
+                    @include list;
+
+                    .percentage {
+                        padding: 15px;
+                    }
+                }
+            }
+        }
+    }
+}

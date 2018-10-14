@@ -1,0 +1,106 @@
+<ion-header no-border>
+    <ion-navbar color="we-canteen-blue">
+        <button ion-button
+                menuToggle color="">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'MY_ORDERS' | translate }}</ion-title>
+        <ion-buttons right></ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="nav">
+        <button (click)="changeSlide(0)"
+                [class.active]="activeSlide === 0">{{ 'TAKE_AWAY' | translate }}
+        </button>
+        <button (click)="changeSlide(1)"
+                [class.active]="activeSlide === 1">{{ 'PENDING' | translate }}
+        </button>
+        <button (click)="changeSlide(2)"
+                [class.active]="activeSlide === 2">{{ 'PAST' | translate }}
+        </button>
+    </div>
+    <ion-slides (ionSlideWillChange)="slideWillChange($event)">
+        <ion-slide>
+            <ul *ngFor="let date of takeAwayDates">
+                <li class="date">{{date.title}}</li>
+                <li class="order"
+                    (click)="openPage(order)"
+                    *ngFor="let order of takeAwayOrders[date.date]">
+                    <div class="figure">
+                        <span class="image"
+                              title="Picture: {{order.meal?.name}}"
+                              [style.background-image]="order.meal?.imageUrl"></span>
+                    </div>
+                    <div class="content">
+                        <h3>{{order.meal?.name}}</h3>
+                        <span class="food-entrepreneur">{{order.foodEntrepreneur?.name}}</span>
+                        <span class="small">{{order.location?.name}}</span>
+                        <span class="small">
+                            {{order.amount}}
+                            <span *ngIf="order.amount === 1">{{ 'MEAL' | translate }}</span>
+                            <span *ngIf="order.amount > 1">{{ 'MEALS' | translate }}</span>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </ion-slide>
+        <ion-slide>
+            <ul *ngFor="let date of pendingDates">
+                <li class="date">{{date.title}}</li>
+                <li class="order"
+                    (click)="openMealPage(order)"
+                    *ngFor="let order of pendingOrders[date.date]">
+                    <div class="figure large">
+                        <span class="image"
+                              title="Picture: {{order.meal?.name}}"
+                              [style.background-image]="order.meal?.imageUrl"></span>
+                    </div>
+                    <div class="content">
+                        <h3>{{order.meal?.name}}</h3>
+                        <span class="food-entrepreneur">{{order.foodEntrepreneur?.name}}</span>
+                        <span class="small">{{order.location?.name}}</span>
+                        <span class="small">
+                            {{order.amount}}
+                            <span *ngIf="order.amount === 1">{{ 'MEAL' | translate }}</span>
+                            <span *ngIf="order.amount > 1">{{ 'MEALS' | translate }}</span>
+                        </span>
+                        <div class="percentage">
+                            <div class="progress">
+                            <span *ngFor="let dot of order.dotsAmount; let i = index"
+                                  [class.active]="i + 1 <= order.count"
+                                  class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </ion-slide>
+        <ion-slide>
+            <ul *ngFor="let date of pastDates">
+                <li class="date">{{date.title}}</li>
+                <li class="order"
+                    (click)="openMealPage(order)"
+                    *ngFor="let order of pastOrders[date.date]">
+                    <div class="figure">
+                        <span class="image"
+                              title="Picture: {{order.meal?.name}}"
+                              [style.background-image]="order.meal?.imageUrl"></span>
+                    </div>
+                    <div class="content">
+                        <h3>{{order.meal?.name}}</h3>
+                        <span class="food-entrepreneur">{{order.foodEntrepreneur?.name}}</span>
+                        <span class="small">{{order.location?.name}}</span>
+                        <span class="small">
+                            {{order.amount}}
+                            <span *ngIf="order.amount === 1">{{ 'MEAL' | translate }}</span>
+                            <span *ngIf="order.amount > 1">{{ 'MEALS' | translate }}</span>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </ion-slide>
+    </ion-slides>
+
+</ion-content>

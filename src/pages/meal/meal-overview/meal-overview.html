@@ -1,0 +1,87 @@
+<ion-header no-border>
+    <ion-navbar color="we-canteen-blue">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <span *ngIf="locations.length === 1">{{locations[0]?.name}}</span>
+            <ion-item no-lines
+                      *ngIf="locations.length > 1">
+                <ion-label>{{ 'LOCATION' | translate }}</ion-label>
+                <ion-select [(ngModel)]="locationId"
+                            (ngModelChange)="changeLocation($event)">
+                    <ion-option *ngFor="let location of locations"
+                                [value]="location._id">{{location.name}}
+                    </ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-title>
+        <ion-buttons right>
+            <span *ngIf="shoppingCartCount"
+                  class="amount">{{shoppingCartCount}}</span>
+            <button ion-button
+                    color="white"
+                    (click)="openShoppingCart()">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="dates">
+        <ul *ngIf="navigationDates.length"
+            [ngClass]="(datesIndex !== 0) ? ('transform-' + datesIndex) : ''">
+            <li *ngFor="let date of navigationDates; let i = index"
+                (click)="changeDate(i)"
+                [class.inactive]="date.inactive"
+                [class.active]="i - 3 === datesIndex">
+                <div class="flex">
+                    <span class="day">{{date.day}}</span>
+                    <span class="date">{{date.date}}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <ion-slides (ionSlideWillChange)="ionSlideWillChange($event)">
+        <ion-slide *ngFor="let list of events; let i = index;">
+            <ul>
+                <li class="date"
+                    [class.warning]="navigationDates[i + 3].warning">
+                    <div>
+                        <span>{{navigationDates[i + 3].timeFromNow}}</span>
+                    </div>
+                </li>
+                <li *ngFor="let event of list"
+                    class="meal"
+                    (click)="openPage(event)">
+                    <div class="container">
+                        <div class="figure">
+                            <span class="triangle" *ngIf="event.safe">
+                                <span>{{ event.max ? ( 'FULL' | translate ) : ( 'TAKE_AWAY' | translate ) }}</span>
+                            </span>
+                            <span class="image"
+                                [style.background-image]="event.meal?.imageUrl"></span>
+                        </div>
+
+                        <div class="figcaption">
+                            <div>
+                                <h3 class="headline">{{event.meal?.name}}</h3>
+                                <span>€{{event.price}}</span>
+                            </div>
+                            <span class="body">{{event.foodEntrepreneur?.name}}</span>
+                        </div>
+                    </div>
+                    <div class="percentage border">
+                        <div class="progress" [class.max]="event.max">
+                            <span *ngFor="let dot of event.dotsAmount; let i = index"
+                                  [class.active]="i + 1 <= event.count + event.localAmount"
+                                  class="dot"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </ion-slide>
+    </ion-slides>
+</ion-content>

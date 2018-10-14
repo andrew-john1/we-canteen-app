@@ -1,0 +1,117 @@
+page-meal-detail {
+    ion-header {
+        @include transparent-title;
+    }
+
+    ion-content {
+        background-color: #FFF;
+        @include top-gradient;
+
+        &.content {
+            margin-bottom: 0;
+        }
+
+        .scroll-content {
+            margin-top: 0 !important;
+        }
+
+        .figure {
+            position: relative;
+            @include figure;
+            @include percentage;
+
+            .percentage {
+                display: inline-block;
+                width: 100%;
+                padding: 10px 15px;
+                position: absolute;
+                bottom: 0;
+                background-color: rgba(255, 255, 255, 0.9);
+            }
+        }
+
+        @include content-detail;
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .header {
+            font-size: 0;
+
+            h1 {
+                width: calc(100% - 50px);
+                display: inline-block;
+                font-family: lato-semibold;
+                letter-spacing: 0.5px;
+            }
+
+            .price {
+                width: 50px;
+                vertical-align: top;
+                text-align: right;
+                font-size: 16px;
+                line-height: 28px;
+                font-family: lato-bold;
+                display: inline-block;
+                color: $text-color;
+            }
+        }
+    }
+
+    ion-footer {
+        padding: 15px;
+        text-align: center;
+        background-color: #FFF;
+        @include box-shadow(0 0 4px 2px rgba(0, 0, 0, 0.2));
+
+        .percentage {
+            width: 100%;
+        }
+
+        div,
+        > span {
+            display: inline-block;
+        }
+
+        .add-to-cart {
+            position: relative;
+            vertical-align: top;
+            width: calc(100% - 120px);
+
+            button {
+                @include button;
+                width: 100%;
+            }
+        }
+
+        button {
+            text-align: center;
+            width: 46px;
+            height: 46px;
+            color: $we-canteen-blue;
+            border: 2px solid $we-canteen-blue;
+            background-color: #FFF;
+            padding: 0;
+            @include border-radius(23px);
+
+            &.subtract {
+                float: left;
+            }
+
+            &.add {
+                float: right;
+            }
+
+            ion-icon {
+                line-height: 44px;
+                font-size: 24px;
+                font-weight: bold;
+
+                &.icon-ios {
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+}

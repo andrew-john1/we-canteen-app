@@ -1,0 +1,36 @@
+<ion-header no-border>
+    <ion-navbar color="transparent">
+        <ion-title>Login</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="figure">
+        <span class="image" title="Afbeelding: We Canteen"></span>
+    </div>
+    <form (ngSubmit)="onSubmit(form.value)"
+          [formGroup]="form">
+        <div class="form-control">
+            <input type="email"
+                   [class.error]="!form.controls.email.valid && formSend || formError"
+                   formControlName="email"
+                   email
+                   placeholder="{{ 'EMAIL' | translate }}">
+        </div>
+        <div class="form-control">
+            <input type="password"
+                   [class.error]="!form.controls.password.valid && formSend || formError"
+                   formControlName="password"
+                   placeholder="{{ 'PASSWORD' | translate }}">
+        </div>
+        <div class="action-buttons">
+            <span class="forgot-password"
+                  (click)="openPage('password-form')">{{ 'FORGOT_PASSWORD' | translate }}</span>
+            <span class="sign-up"
+                  (click)="openPage('account-form')">{{ 'SIGN_UP' | translate }}</span>
+        </div>
+
+        <button class="submit"
+                type="submit">{{ 'LOGIN' | translate }}</button>
+    </form>
+</ion-content>

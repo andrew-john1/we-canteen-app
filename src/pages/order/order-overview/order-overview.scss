@@ -1,0 +1,122 @@
+page-order-overview {
+    ion-content {
+        .scroll-content {
+            overflow-y: hidden;
+        }
+
+        .nav {
+            font-size: 0;
+            height: 45px;
+            border-bottom: 1px solid $border-grey;
+
+            button {
+                display: inline-block;
+                text-transform: uppercase;
+                font-size: 12px;
+                font-family: lato-medium;
+                width: 33.3%;
+                height: 45px;
+                background-color: transparent;
+                opacity: 0.5;
+                color: $text-color;
+                @include transition(border 500ms ease-out);
+
+                &.active {
+                    opacity: 1;
+                }
+            }
+        }
+
+        ion-slides {
+            position: fixed;
+            height: calc(100vh - 95px);
+            top: 95px;
+
+            ion-slide.swiper-slide {
+                height: 100%;
+                overflow: auto;
+                display: inline-block;
+                padding-top: 10px;
+                padding-bottom: 20px;
+
+                ul {
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    text-align: left;
+
+                    li {
+                        padding: 10px 20px;
+                        text-align: left;
+
+                        &.date {
+                            font-size: 14px;
+                            text-transform: uppercase;
+                            letter-spacing: 0.3px;
+                            padding-bottom: 5px;
+                        }
+
+                        &.order {
+                            position: relative;
+                            font-size: 0;
+
+                            @media screen and (min-width: 768px) {
+                                display: inline-block;
+                                vertical-align: top;
+                                width: calc(50% - 8px);
+                                &:nth-child(2n) {
+                                    margin-right: 16px;
+                                }
+                            }
+
+                            .figure {
+                                width: 80px;
+                                height: 80px;
+                                display: inline-block;
+                                @include figure-small(80px, 80px);
+
+                                &.large {
+                                    height: 100px;
+                                    @include figure-small(80px, 100px);
+                                }
+                            }
+
+                            .content {
+                                display: inline-block;
+                                width: calc(100% - 95px);
+                                vertical-align: top;
+                                @include order-details-header;
+                                @include order-details-content;
+
+                                .check,
+                                button {
+                                    position: absolute;
+                                    display: inline-block;
+                                    margin-bottom: 0;
+                                    right: 20px;
+                                    bottom: 10px;
+                                }
+
+                                .check i {
+                                    color: $text-color;
+                                }
+
+                                button {
+                                    width: 80px;
+                                    height: 24px;
+                                    color: #FFF;
+                                    background-color: $we-canteen-blue;
+                                }
+
+                                @include percentage;
+                                .percentage {
+                                    margin-top: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

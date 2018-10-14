@@ -1,0 +1,33 @@
+page-settings {
+    ion-content {
+        .content {
+            padding: 20px 30px;
+            margin-top: 20px;
+
+            ion-item.item-select.item-block {
+                padding-left: 0;
+                min-height: 30px;
+                margin-bottom: 28px;
+
+                &.input-has-value .item-inner .input-wrapper ion-label.label {
+                    color: #FFF;
+                }
+
+                .item-inner {
+                    border-bottom: 2px solid $border-grey;
+                    padding: 0;
+
+                    .input-wrapper {
+                        align-items: flex-start;
+
+                        ion-label.label {
+                            color: $text-placeholder;
+                        }
+
+                        @include ion-select;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar color="we-canteen-blue">
+        <ion-title>{{ 'COMPLETED_GIVE_AWAY' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <h1>{{ 'IT_WORKED' | translate }}</h1>
+    <p>{{ 'COMPLETED_GIVE_AWAY_TEXT' | translate }}</p>
+
+    <div class="content">
+        <div>
+            <span class="label">{{ 'MEAL' | translate }}</span>
+            <span class="value">{{meal.name}}</span>
+        </div>
+        <div>
+            <span class="label">{{ 'AMOUNT_ABBR' | translate }}</span>
+            <span class="value">{{order.amount}}</span>
+        </div>
+        <div>
+            <span class="label">{{ 'FOOD_ENTREPRENEUR_ABBR' | translate }}</span>
+            <span class="value">{{foodEntrepreneur.name}}</span>
+        </div>
+        <div>
+            <span class="label">{{ 'USER' | translate }}</span>
+            <span class="value">{{user.firstName}} {{user?.lastName}}</span>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <div>
+            <button (click)="openPage('qr-scanner')"
+                    class="scanner">{{ 'OPEN_SCANNER' | translate }}
+            </button>
+        </div>
+        <div>
+            <span (click)="openPage('meals')"
+                  class="meals">{{ 'MEAL_OVERVIEW' | translate }}</span>
+        </div>
+    </div>
+</ion-content>

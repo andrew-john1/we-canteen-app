@@ -1,0 +1,40 @@
+<ion-header no-border>
+    <ion-navbar color="we-canteen-blue">
+        <button ion-button
+                menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'SETTINGS' | translate }}</ion-title>
+        <ion-buttons right></ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+    <div class="content">
+        <ion-item>
+            <ion-label>{{ 'LANGUAGE' | translate }}</ion-label>
+            <ion-select [(ngModel)]="language"
+                        (ngModelChange)="selectLanguage($event)">
+                <ion-option value="nl">{{ 'DUTCH' | translate}}</ion-option>
+                <ion-option value="en">{{ 'ENGLISH' | translate}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{ 'PAYMENT_METHOD' | translate }}</ion-label>
+            <ion-select [(ngModel)]="paymentMethod"
+                        (ngModelChange)="selectPaymentMethod($event)">
+                <ion-option value="ideal">{{ 'IDEAL' | translate}}</ion-option>
+                <ion-option value="paypal">{{ 'PAYPAL' | translate}}</ion-option>
+                <ion-option value="creditCard">{{ 'CREDIT_CARD' | translate}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{ 'EMAIL_CONFIRMATION' | translate }}</ion-label>
+            <ion-select [(ngModel)]="emailSetting"
+                        (ngModelChange)="selectEmailSetting($event)">
+                <ion-option value="yes">{{ 'YES' | translate}}</ion-option>
+                <ion-option value="no">{{ 'NO' | translate}}</ion-option>
+            </ion-select>
+        </ion-item>
+    </div>
+</ion-content>
